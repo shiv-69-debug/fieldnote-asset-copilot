@@ -1,4 +1,16 @@
-# Final demo — 4 minutes 50 seconds
+# Final demo
+
+## Completed narrated recording — 4 minutes 48 seconds
+
+[Download Fieldnote-demo.mp4](https://github.com/shiv-69-debug/fieldnote-asset-copilot/releases/download/final-submission-v2/Fieldnote-demo.mp4)
+
+The recording uses **synthetic narration**, clearly disclosed in the audio and visuals. From 0:00–2:00 it explains the design, architecture, tools, development and measured final replay. From 2:00–4:48 it executes Q3 in a fresh browser session against the 600-well dataset in explicitly selected **Local analysis** mode, then shows the result, filtered data, source note, SOP and execution details. This demo does not claim to be a fresh model-backed run.
+
+Verified: MP4 with H.264 video and AAC narration, 1600×1000 resolution, duration 288 seconds. Actual browser result: 26 reports, 17 met and 9 missed. Verification metadata: `results/demo-verification.json`.
+
+To reproduce on Windows with Node.js 24+, Playwright Chromium, FFmpeg/ffprobe and Windows System.Speech installed: `node scripts/record-demo.js`. Intermediate audio and browser captures stay in ignored `.local/demo-build/`.
+
+## Optional own-voice version — 4 minutes 50 seconds
 
 Record your screen and your own voice. This is a recording script, not a completed video. Open http://127.0.0.1:3100 before recording. Use the final 600-well dataset, analysis date 15 January 2027. Have `results/final-transcript.html` open in a second tab as recorded evidence; distinguish it from the live run if you show it.
 
@@ -58,6 +70,6 @@ Show page two of the report briefly.
 
 1. Record with your screen recorder and microphone; stop by **4:50**, keeping the final video under five minutes. Export as `Fieldnote-demo.mp4`.
 2. In Google Drive, create a submission folder and upload `docs/final-submission.pdf` and `Fieldnote-demo.mp4`.
-3. Set sharing to **Anyone with the link → Viewer** if required by the submission form. Verify the links in a private browser window.
-4. The official questions also request full answers and visuals. Include `results/final-transcript.html` and its linked `results/final-browser/` screenshots as supporting evidence, preserving relative paths when packaging them. The two-page report summarizes those outputs.
+3. Set sharing to **Anyone with the link → Viewer** if required by the submission form. Verify the links in a private browser window. The final report is now three pages.
+4. The official questions also request full answers and visuals. Include `results/final-transcript.html` and its linked `results/final-browser/` screenshots as supporting evidence, preserving relative paths when packaging them. The three-page report summarizes those outputs.
 5. Submit the report and video links in the organizer's form. Uploading to Drive alone does not submit the entry.

@@ -12,12 +12,13 @@ The conversation layout keeps summaries and visuals inline, with **Sources**, **
 
 ## Final submission files
 
-- [Two-page final report (PDF)](docs/final-submission.pdf)
+- [Three-page final report (PDF)](docs/final-submission.pdf) — page 1: architecture and tools; pages 2–3: results and output excerpts for all 11 final questions.
+- [Narrated demo video (MP4, 4:48)](https://github.com/shiv-69-debug/fieldnote-asset-copilot/releases/download/final-submission-v2/Fieldnote-demo.mp4) — synthetic narration, two-minute architecture explanation, then a fresh end-to-end gas audit in explicit Local analysis mode.
 - [Report HTML source](docs/final-submission.html)
 - [All 11 final questions: complete answers and visuals](results/final-transcript.html) — download and open locally, keeping `results/final-browser/` alongside it for screenshots.
 - [Concise final results](results/final-summary.md)
 - [Recorded browser evaluation](results/final-browser-evaluation.json)
-- [Five-minute demo recording script](docs/DEMO.md) — the video itself has not yet been recorded or uploaded.
+- [Demo notes and optional own-voice recording guide](docs/DEMO.md)
 
 ## Run: final 600-well dataset
 
@@ -121,7 +122,7 @@ The repository's examples say **16 Oct 2026**; the supplied PDFs say **17 Oct 20
 - [Five-minute, own-voice demo guide](docs/DEMO.md)
 - `npm run submission`: generate a **two-page PDF rehearsal draft** from the recorded evaluation. Replace its sample-results page with the organizer's final-question results before submitting.
 
-The challenge still requires the participant's own-voice video, a publicly published licensed repository, and submission through OrganizerHQ. This app does not publish or submit anything automatically.
+The repository includes an automated demo with clearly labeled synthetic narration. The participant remains responsible for the organizer's submission and any requirement to use their own voice. Google Drive upload and OrganizerHQ submission have not been performed.
 
 ## Attribution
 

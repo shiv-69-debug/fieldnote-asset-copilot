@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-10-17T12:28:27.552Z",
+  "synthetic_narration": true,
+  "mode": "local",
+  "duration_seconds": 288,
+  "video": "docs/Fieldnote-demo.mp4",
+  "scenario": "Q3 gas-response audit",
+  "reports": 26,
+  "met": 17,
+  "missed": 9,
+  "real_browser_execution": true,
+  "architecture_seconds": 120,
+  "workflow_seconds": 168
+}
