@@ -19,16 +19,6 @@ The conversation layout keeps summaries and visuals inline, with **Sources**, **
 
 Both files are uploaded with **Anyone with the link → Viewer** access and were checked while signed out. Paste the PDF link into the organizer's write-up field and the video link into the video field.
 
-### Repository copies and supporting evidence
-
-- [Three-page final report (PDF)](docs/final-submission.pdf) — page 1: architecture and tools; pages 2–3: results and output excerpts for all 11 final questions.
-- [Narrated demo video (MP4, 4:48)](https://github.com/shiv-69-debug/fieldnote-asset-copilot/releases/download/final-submission-v2/Fieldnote-demo.mp4) — synthetic narration, two-minute architecture explanation, then a fresh end-to-end gas audit in explicit Local analysis mode.
-- [Report HTML source](docs/final-submission.html)
-- [All 11 final questions: complete answers and visuals](results/final-transcript.html) — download and open locally, keeping `results/final-browser/` alongside it for screenshots.
-- [Concise final results](results/final-summary.md)
-- [Recorded browser evaluation](results/final-browser-evaluation.json)
-- [Demo notes and optional own-voice recording guide](docs/DEMO.md)
-
 ## Run: final 600-well dataset
 
 Requires **Node.js 24+** and Git. There are no runtime npm dependencies.
