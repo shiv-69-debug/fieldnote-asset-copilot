@@ -1,27 +1,51 @@
 # Fieldnote · Asset Intelligence Copilot
 
-**Ask your oil field a question. Inspect the records behind the answer.**
+**Ask an operational question. Get an answer you can trace to the original records.**
 
-Built for the FlytBase Asset Intelligence local challenge. Fieldnote combines a model-backed chat interface, deterministic engineering calculations, original-source citations, and persistent shared/private memory.
+Built for the **FlytBase Asset Intelligence challenge**. Fieldnote combines well inspections, maintenance records, operator notes and operating procedures to answer questions about current status, compliance, equipment recalls and repair priorities.
 
-The interface uses a near-black/lavender palette, editorial typography, and an orbital visual style. Motion respects reduced-motion preferences, and every chart retains an accessible data table.
+**Final dataset:** 600 wells · 125,198 inspections · 17,415 maintenance records
 
-The conversation layout keeps summaries and visuals inline, with **Sources**, **Data**, and **Details** panels for deeper inspection. The sidebar collapses, large data tables are filterable/paginated, and **Latest** returns to the newest reply without forcing a scroll while you read older messages.
+**Analysis date:** 15 January 2027
 
-![Fieldnote workspace](docs/assets/workspace.png)
+## Submission — start here
 
-## Final submission files
+- **[Read the report — Google Drive PDF](https://drive.google.com/file/d/14wU-5seYy1qZEx9ZiksXJH48fIl1EzuE/view)**
 
-### Google Drive submission links
+  Three pages: system design, architecture and tools on page 1; results and output excerpts for all 11 final questions on pages 2–3.
+- **[Watch the demo — Google Drive video, 4:48](https://drive.google.com/file/d/1lGxYIb0J29DRsHg837vK2V_WTb-8EF2a/view)**
 
-- **[Write-up: three-page PDF](https://drive.google.com/file/d/14wU-5seYy1qZEx9ZiksXJH48fIl1EzuE/view)** — page 1 covers system design, architecture, tools and workflow; pages 2–3 cover results and output excerpts for all 11 final questions.
-- **[Video: narrated demo, 4:48](https://drive.google.com/file/d/1lGxYIb0J29DRsHg837vK2V_WTb-8EF2a/view)** — synthetic narration; two minutes of architecture followed by an actual end-to-end gas-response audit in Local analysis mode.
+  Two minutes explaining the architecture, followed by an actual end-to-end gas-response audit. The recording uses disclosed synthetic narration and explicitly selected Local analysis mode.
 
-Both files are uploaded with **Anyone with the link → Viewer** access and were checked while signed out. Paste the PDF link into the organizer's write-up field and the video link into the video field.
+Both links allow **Anyone with the link → Viewer** access and were verified while signed out.
 
-## Run: final 600-well dataset
+## The problem
 
-Requires **Node.js 24+** and Git. There are no runtime npm dependencies.
+A well's inspection, latest operator note, repair history and applicable rule can disagree or live in different documents. A useful answer must determine which evidence applies, respect its date, and explain the decision.
+
+Fieldnote helps a reviewer:
+
+- **Resolve current status:** compare corrected inspections with timestamped shut-in and restart notes.
+- **Audit compliance:** apply dated gas-response deadlines, bypass approvals and spill requirements.
+- **Track recalled equipment:** identify documented installed pump lots and distinguish direct replacement reports from unconfirmed hearsay.
+- **Prioritize field work:** rank evidence-backed concerns, with the reasoning and operator quotes visible.
+- **Continue a conversation:** return to an earlier result set across topic changes while keeping user preferences private.
+
+## How it works
+
+1. **Load the evidence.** Node.js ingests JSON/JSONL records and source documents into SQLite with FTS5 search. Revised snapshots supersede changed records while retaining provenance.
+2. **Interpret the question.** In AI mode, Gemma 4 proposes a structured plan. The application checks dates, well IDs, scope and supported operations; recognized domain rules constrain execution.
+3. **Calculate the answer.** Deterministic tools join records and apply the relevant procedures. Numerical results come from these tools, rather than free-form model estimates.
+4. **Show the result and its sources.** The browser renders cards, tables, charts or maps. **Sources** opens original evidence, **Data** exposes complete result rows, and **Details** explains execution.
+5. **Keep appropriate memory.** Shared field reports retain attribution and verification status. Conversation history and display preferences are stored per user.
+
+**Stack:** Node.js 24 · SQLite / FTS5 · JavaScript browser UI · Gemma `gemma-4-26b-a4b-it` through Google's Gemini API · Playwright verification.
+
+For implementation details, see [Architecture](docs/ARCHITECTURE.md).
+
+## Run locally
+
+Requires **Node.js 24+** and **Git**. The application has no runtime npm dependencies.
 
 ```sh
 git clone https://github.com/shiv-69-debug/fieldnote-asset-copilot.git
@@ -30,101 +54,83 @@ npm run setup:data
 npm run start:final
 ```
 
-Open **http://127.0.0.1:3100**. `start:final` explicitly imports both dataset snapshots with revision handling and sets the analysis date to **15 January 2027**. This works without a pre-existing local database. For model-backed answers, create `.env` using `.env.example` and supply your own API key. Without a key, use Local analysis.
+Open **http://127.0.0.1:3100**.
 
-To reproduce the final source/rule checks, run `npm run evaluate:final`. To regenerate the report from saved browser evidence, run `npm ci`, `npx playwright install chromium`, then `npm run submission:final`. The recorded final run completed 21 turns; its results are application checks, not an official answer key.
+`start:final` loads both organizer snapshots with revision handling and fixes the analysis date at **15 January 2027**. Confirm that the interface shows **600 wells**. Dataset files are downloaded separately; no existing local database is needed.
 
-### Original sample dataset
+### Choose a reasoning mode
 
-Requires **Node.js 24+** and Git. There are no runtime npm dependencies.
+**Local analysis:** select this below the composer to run supported domain questions without an API key. It uses the local parser and deterministic tools.
 
-```sh
-npm run setup:data
-npm start
-```
-
-Open **http://127.0.0.1:3100**. In this workspace the already-downloaded dataset under `../.cache/asset-intelligence-dataset/sample-data` is detected automatically. A fresh checkout uses `data/sample-data`, downloaded by `setup:data`.
-
-For AI mode, create `.env` from `.env.example` and set `GEMINI_API_KEY`, or an OpenAI-compatible endpoint and key. This workspace also loads the existing parent `.env`; credentials stay server-side. The default model is `gemma-4-26b-a4b-it`.
+**AI copilot:** create a `.env` file in the repository root with:
 
 ```dotenv
-GEMINI_API_KEY=your_key
+GEMINI_API_KEY=your_key_here
 COPILOT_MODEL=gemma-4-26b-a4b-it
-ASSET_PORT=3100
-ANALYSIS_DATE=2026-10-17
 ```
 
-Select **AI copilot** below the composer. **Local analysis** uses a limited domain-language parser without inference. Provider failures can fall back to supported local operations or exact retrieved SOP clauses; the answer visibly identifies the fallback and records the error. Novel statistical queries require a working model.
+Restart the server and select **AI copilot**. Credentials stay server-side. Provider failures are explicitly labeled when a supported local fallback is used; a configured key does not guarantee provider availability.
 
-Seeing an HTTP 500 fallback? Read [the provider investigation and how answers are produced](docs/PROVIDER_DIAGNOSIS.md). The UI's `Model configured` label indicates a configured key, not a live availability check.
+## Try the demonstrated scenario
 
-## What works
+Select **Laura Simmons**, start a new conversation, choose **Local analysis**, and ask:
 
-- Status cards, tables, temperature line charts, comparison bars, real-coordinate maps, and area/month heatmaps, generated inline for the question. Explicit visual requests take precedence.
-- Production derived from each well-type manual; downtime counted from inspections, not maintenance hours.
-- Real spills after scoped corrections, repair costs selected by start date, containment times extracted from linked reports, and compliance evaluated against source documents.
-- Source buttons open the original inspection, repair, report, note, user, manual, SOP, or feedback audit entry.
-- Shared corrections preserve the original and previous effective value, author, reason, target, timestamp, and scope. Well-specific and type-specific policies are distinct.
-- Persistent private conversations per user across chats; a user picker switches identities. Shared knowledge remains visible to everyone.
-- General requests such as “Remembering past conversations” use the selected user's private history and ask which discussion to continue. They do not search field manuals or assume an unstated question.
-- Malformed, repetitive model text is rejected and given one bounded repair attempt. Raw retrieved documents are kept out of the conversation stream; existing malformed saved replies are clearly marked and can be regenerated with **Ask again**.
-- Conflicting observations and competing corrections remain visible. Unknown causes remain unknown.
-- Additional datasets can be imported alongside the sample, with duplicate detection, reference validation, document indexing, fingerprints, and persistent import roots.
+> Since 1 Nov 2026, every time an operator note reports gas at a well, did we get someone out to that well in time under our operating procedures? List every report and whether the response met the deadline.
 
-![A real sample-data answer](docs/assets/status.png)
+The verified run returned **26 reports: 17 met the deadline and 9 missed it**.
 
-Screenshots show the actual application in **local analysis mode**, not a simulated model answer.
+1. Inspect the report and response timestamps in the table.
+2. Open **Data** and filter for `Missed`.
+3. Open **Sources** to inspect an operator note and the operations SOP.
+4. Open **Details** to see the execution plan and analysis period.
 
-## Verify the supplied scenarios
+The key rule is temporal: **24 hours before 1 January 2027; 12 hours from that date**. Only a later maintenance start or manual inspection on the same well qualifies.
+
+![Gas-response audit in the Fieldnote interface](results/final-browser/Q3-1.png)
+
+*Actual application screenshot from the saved final-question browser replay.*
+
+## Verification
+
+The saved final evaluation completed **all 21 turns of the 11 final questions**, using their specified users and sessions through the browser. That replay recorded **18 model-backed read turns, 3 local memory writes and 0 provider fallbacks**. The separate narrated demo is a fresh Local analysis run.
+
+Reproduce the final source/rule checks:
+
+```sh
+npm run evaluate:final
+```
+
+For the unit/API and browser regression suites:
 
 ```sh
 npm ci
 npm test
 npx playwright install chromium
 npm run test:browser
-npm run evaluate
-npm run evaluate:live
 ```
 
-- `npm test`: all 18 conversational scenarios on **both 16 and 17 October**, plus boundaries, scope/privacy, persistence, imports, HTTP, and regression checks.
-- `evaluate`: sends every scenario and its prerequisite turns through the real **HTTP `/api/chat` endpoint**, with a fresh original dataset and memory for each scenario.
-- `evaluate:live`: the same HTTP test with real model calls. Exports distinguish successful model turns from explicitly labeled local fallbacks. It uses your API quota.
-- `verify:generalization`: additional live probes for a numerical aggregate, report-compliance filtering, and a document-only SOP question. These are a small smoke test, not proof of universal generalization.
+The checks test application behavior; they are **not an independent official answer key**. Some final questions require judgement or deliberately lack measurements.
 
-Machine-readable transcripts, evidence, plans, constraint adjustments, model usage and outcomes are written to `results/`. Expected values exist only in `tests/scenarios.js`; production code does not read the evaluation questions or expected answers.
+## Reading the code
 
-See [the verified result summary](results/VERIFICATION.md) for exact pass counts and the distinction between successful model calls and local fallbacks.
+- `server.js` — HTTP API and application startup.
+- `src/store.js` — records, search, snapshot revisions and persistence.
+- `src/planner.js` — model planning, local routing and constraints.
+- `src/engine.js` and `src/field-operations.js` — calculations and operational rules.
+- `src/service.js` — conversations, references, feedback and preferences.
+- `public/` — chat interface and evidence/data/details panels.
+- `tests/` and `e2e/` — automated checks and browser scenarios.
 
-The benchmark is intentionally **hybrid**: literal dates, IDs, filters, limits and scope are protected by deterministic checks. The model's proposed plan and any adjustments are inspectable. Passing these scenarios does not establish that an unguarded model gets them right.
+## Interpretation and limits
 
-## Load the final dataset
+- Missing reservoir pressure, metered oil output or incident-specific H2S values are reported as **unavailable**.
+- Repair priorities are **transparent heuristics**, not calibrated failure probabilities.
+- Recall counts cover **documented affected inventory**; missing lot evidence does not prove a pump is unaffected.
+- Temperature comparisons state their period, operating-state filter and ambient/type/month normalization.
+- This is a local challenge application. Its user selector demonstrates per-user state; it is not production authentication.
 
-For the released challenge dataset, use **`npm run setup:data` then `npm run start:final`** as described above. The following general importer instructions apply to additional, non-conflicting datasets; revised snapshots require the API's `replaceExisting: true` flag or explicit revision handling as used by `start:final`.
+## License and attribution
 
-1. Put the organizer's additional dataset on this machine. The root must contain `fleet/` and `assets/`.
-2. Open **Data & evidence → Additional dataset directory → Validate & import dataset**.
-3. Confirm the new well count and fingerprint. Imported paths survive restarts.
-4. Start a new conversation, choose the requested user/date, run the final questions, and use **Export**.
+Application: [MIT](LICENSE). Dataset and fictional operating documents: [FlytBaseAILabs](https://github.com/FlytBaseAILabs/flytbase-ahc-swe-asset-intelligence-dataset), © 2026 FlytBase, MIT. Dataset downloads retain their original license. Map tiles: OpenStreetMap contributors. Browser tooling: Playwright, Apache-2.0.
 
-Alternatively, set `DATASET_PATHS` to semicolon-separated dataset roots. Identical duplicate records are deduplicated. Conflicting records with the same ID stop the import for review. Metadata uses the snapshot with the newer inspection. Runtime corrections and private conversations survive reindexing.
-
-For a clean rehearsal, stop the server and move `.local/copilot.sqlite` and any SQLite sidecar files to a backup location. The next start creates fresh runtime memory. The scenario runner does this isolation automatically in memory; it never changes your interactive database.
-
-## Analysis dates
-
-The repository's examples say **16 Oct 2026**; the supplied PDFs say **17 Oct 2026**, while Q6 retains a 16 Jun–16 Oct window. The UI defaults to the PDF date and displays it on every answer. Relative months are calendar months. With October 17 selected, “last 4 months” is June 17–October 17; selecting October 16 reproduces the repository's explicit window. The expected sample rankings match at both dates. Explicit start/end dates are honored.
-
-## Architecture and submission
-
-- [Architecture, rules, scope and known boundaries](docs/ARCHITECTURE.md)
-- [Requirement-by-requirement coverage](docs/REQUIREMENTS.md)
-- [Five-minute, own-voice demo guide](docs/DEMO.md)
-- `npm run submission`: generate a **two-page PDF rehearsal draft** from the recorded evaluation. Replace its sample-results page with the organizer's final-question results before submitting.
-
-The repository includes an automated demo with clearly labeled synthetic narration. Both final files are uploaded to Google Drive at the links above. The participant remains responsible for the organizer's submission and any requirement to use their own voice. OrganizerHQ submission has not been performed.
-
-## Attribution
-
-Application code: [MIT](LICENSE). Dataset, manuals, SOPs and scenario requirements: [FlytBaseAILabs](https://github.com/FlytBaseAILabs/flytbase-ahc-swe-asset-intelligence-dataset), © 2026 FlytBase, MIT. Dataset files are downloaded separately with their original license. Map tiles: OpenStreetMap contributors. Development/browser tooling: Playwright, Apache-2.0.
-
-Development was AI-assisted using OpenCode. The participant should review the implementation, reproduce the results, and explain the design in their own words. No model training or image analysis is performed.
+Development was AI-assisted using OpenCode. No model training or image analysis is performed.
