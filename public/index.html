@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b080c"><title>Fieldnote · Asset Intelligence</title><link rel="icon" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script></head>
+<body>
+  <button id="sidebar-backdrop" class="sidebar-backdrop" aria-label="Close sidebar" hidden></button>
+  <aside class="rail" id="sidebar" aria-label="Workspace navigation">
+    <a class="brand" href="/" aria-label="Fieldnote home"><span class="brand-icon">ƒ</span><span>fieldnote<span class="brand-sub">ASSET INTELLIGENCE</span></span></a>
+    <button id="new-chat" class="new-chat"><span>＋</span> New conversation</button>
+    <div class="rail-label">WORKSPACE</div>
+    <button class="nav active" id="chat-nav"><span>◈</span> Field copilot <span class="live-dot"></span></button>
+    <button class="nav" id="knowledge-nav"><span>◎</span> Shared knowledge</button>
+    <button class="nav" id="data-nav"><span>▤</span> Data & evidence</button>
+    <div class="rail-label history-label">YOUR CONVERSATIONS</div>
+    <input id="chat-search" class="chat-search" aria-label="Search conversations" placeholder="Search chats">
+    <div id="conversations" class="conversations"></div>
+    <div class="rail-bottom"><div class="identity-caption">VIEWING AS</div><label for="user" class="sr-only">Current user</label><select id="user"></select><div id="role" class="user-role"></div><p>Shared field knowledge.<br>Private conversation history.</p></div>
+  </aside>
+  <main>
+    <header><div class="header-title"><button id="toggle-sidebar" class="icon-button" aria-label="Toggle sidebar" aria-controls="sidebar" aria-expanded="true">☰</button><h1>Field copilot</h1></div><div class="header-right"><span class="date-label">As of</span><input aria-label="Analysis date" type="date" id="today" value="2026-10-17"><details class="header-menu"><summary aria-label="Conversation options">⋯</summary><div class="header-menu-content"><button id="settings">Settings & data</button><button id="export">Export my conversations</button></div></details></div></header>
+    <section class="dataset-strip" aria-label="Dataset status"><span><i class="dot"></i> <strong id="well-count">—</strong> connected wells</span><span><strong id="inspection-count">—</strong> inspections</span><span id="model-label">Loading workspace…</span></section>
+    <div class="chat-scroll" id="chat-scroll">
+      <section id="welcome" class="welcome">
+        <div class="hero-meta"><span>01 / INTELLIGENCE LAYER</span><span>BUILT FOR THE FIELD. DESIGNED FOR CLARITY.</span></div>
+        <div class="hero-stage">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="small-mark" aria-hidden="true">✳</span> YOUR FIELD. IN FOCUS.</div>
+            <h2><span class="hero-title">Every well has a story.</span><span>Get the full picture.</span></h2>
+            <p>Ask about production, spills, repairs, or compliance.<br> Clear answers. Connected evidence. A new perspective.</p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-grid"></div>
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="signal-orb"><div class="orb-latitudes"></div><span class="orb-glyph">ƒ</span></div>
+            <div class="orbit orbit-front"></div>
+            <span class="orbit-cross cross-one">+</span><span class="orbit-cross cross-two">+</span>
+            <div class="art-caption"><span class="art-caption-line"></span> THE CONNECTED FIELD</div>
+          </div>
+        </div>
+        <div class="prompt-heading"><span>EXPLORE YOUR DATA</span><span>CHOOSE A STARTING POINT ↙</span></div>
+        <div class="suggestions">
+          <button data-prompt="Is WELL-0001 producing oil right now? When was it last inspected, and by whom?"><span class="suggest-icon">◉</span><span><strong>Check a well</strong><small>Is WELL-0001 producing right now?</small></span><b>↗</b></button>
+          <button data-prompt="Which 3 wells in Northeast Block 7 had the most downtime in the last 4 months? Show a bar chart."><span class="suggest-icon">▥</span><span><strong>Find the biggest losses</strong><small>Compare downtime in Northeast Block 7</small></span><b>↗</b></button>
+          <button data-prompt="Show on a map every well in Northeast Block 8 with a real spill in the last 90 days."><span class="suggest-icon">⌖</span><span><strong>Put incidents on the map</strong><small>Recent spills in Northeast Block 8</small></span><b>↗</b></button>
+          <button data-prompt="Which rules has WELL-0001 broken in the last 12 months, and what is still open?"><span class="suggest-icon">◇</span><span><strong>Review compliance</strong><small>Open actions and the evidence behind them</small></span><b>↗</b></button>
+        </div>
+        <div class="source-line">CONNECTED TO <span>Inspections</span><span>Repair reports</span><span>Manuals & SOPs</span><span>Field notes</span></div>
+      </section>
+      <section id="messages" aria-live="polite" aria-label="Conversation"></section>
+    </div>
+    <footer class="composer-wrap"><button id="jump-latest" class="jump-latest" aria-label="Jump to latest message" hidden>↓ Latest</button><form id="composer"><label for="question" class="sr-only">Ask your copilot</label><textarea id="question" rows="1" placeholder="Ask about your wells…" required maxlength="12000"></textarea><div class="composer-bottom"><label class="mode-label"><span class="mode-dot"></span><select id="mode" aria-label="Reasoning mode"><option value="local">Local analysis</option><option value="model">AI copilot</option></select></label><span class="enter-hint">Enter to send · Shift + Enter for a new line</span><button id="send" type="submit" aria-label="Send question">↑</button></div></form><div class="footer-note"><span>Answers use your records. Verify important details with the cited evidence.</span></div></footer>
+  </main>
+  <dialog id="drawer"><div class="dialog-header"><button id="drawer-back" class="icon-button" aria-label="Back to previous panel" hidden>←</button><h2 id="drawer-title">Evidence</h2><button id="close-drawer" aria-label="Close panel">×</button></div><div id="drawer-content"></div></dialog>
+  <div id="toast" role="status"></div>
+</body></html>

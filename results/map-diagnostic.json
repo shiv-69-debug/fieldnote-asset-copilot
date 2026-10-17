@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-10-17T09:39:35.374Z",
+  "requests": [
+    {
+      "url": "https://tile.openstreetmap.org/12/883/1660.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/883/1661.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/884/1660.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/884/1661.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/885/1660.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/885/1661.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/886/1660.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/886/1661.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/887/1660.png",
+      "referer": "http://127.0.0.1:56991/"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/887/1661.png",
+      "referer": "http://127.0.0.1:56991/"
+    }
+  ],
+  "responses": [
+    {
+      "url": "https://tile.openstreetmap.org/12/883/1660.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/886/1661.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/884/1661.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/887/1660.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/884/1660.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/883/1661.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/886/1660.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/887/1661.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/885/1661.png",
+      "status": 200,
+      "content_type": "image/png"
+    },
+    {
+      "url": "https://tile.openstreetmap.org/12/885/1660.png",
+      "status": 200,
+      "content_type": "image/png"
+    }
+  ],
+  "pins": 4,
+  "basemap": "ready",
+  "caption": "Geographic coordinates from well metadata. Select a pin for evidence."
+}

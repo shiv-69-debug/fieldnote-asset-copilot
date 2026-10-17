@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-10-17T09:15:09.641Z",
+  "model": "gemma-4-26b-a4b-it",
+  "question": "Is WELL-0001 producing oil right now? When was it last inspected, and by whom?",
+  "retries_per_probe": 0,
+  "results": [
+    {
+      "round": 1,
+      "variant": "production",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.866
+    },
+    {
+      "round": 1,
+      "variant": "minimal-provider-ping",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.72
+    },
+    {
+      "round": 2,
+      "variant": "minimal-provider-ping",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 5.158
+    },
+    {
+      "round": 2,
+      "variant": "production",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.514
+    },
+    {
+      "round": 3,
+      "variant": "production",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.534
+    },
+    {
+      "round": 3,
+      "variant": "minimal-provider-ping",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 0.964
+    },
+    {
+      "round": 4,
+      "variant": "minimal-provider-ping",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 2.212
+    },
+    {
+      "round": 4,
+      "variant": "production",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.177
+    }
+  ]
+}

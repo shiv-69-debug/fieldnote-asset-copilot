@@ -1,0 +1,23 @@
+{
+  "name": "field-evidence-copilot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "devDependencies": { "@playwright/test": "1.63.0" },
+  "scripts": {
+    "start": "node --env-file-if-exists=../.env --env-file-if-exists=.env server.js",
+    "start:final": "node --env-file-if-exists=../.env --env-file-if-exists=.env scripts/start-final.js",
+    "evaluate:final": "node scripts/evaluate-final.js",
+    "submission:final": "node scripts/package-final.js",
+    "test": "node --test tests/*.test.js",
+    "evaluate": "node scripts/evaluate.js",
+    "evaluate:live": "node --env-file-if-exists=../.env --env-file-if-exists=.env scripts/evaluate.js --live",
+    "test:browser": "playwright test",
+    "setup:data": "node scripts/setup-data.js",
+    "verify:generalization": "node --env-file-if-exists=../.env --env-file-if-exists=.env scripts/verify-generalization.js",
+    "capture:ui": "node scripts/capture-ui.js",
+    "submission": "node scripts/build-submission.js"
+  }
+}

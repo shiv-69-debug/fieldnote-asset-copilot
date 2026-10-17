@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-10-17T09:12:18.793Z",
+  "model": "gemma-4-26b-a4b-it",
+  "question": "Is WELL-0001 producing oil right now? When was it last inspected, and by whom?",
+  "retries_per_probe": 0,
+  "results": [
+    {
+      "round": 1,
+      "variant": "production",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.7
+    },
+    {
+      "round": 1,
+      "variant": "smaller-schema-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.47
+    },
+    {
+      "round": 1,
+      "variant": "omit-thinking-config-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.455
+    },
+    {
+      "round": 2,
+      "variant": "smaller-schema-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.548
+    },
+    {
+      "round": 2,
+      "variant": "omit-thinking-config-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.509
+    },
+    {
+      "round": 2,
+      "variant": "production",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.383
+    },
+    {
+      "round": 3,
+      "variant": "omit-thinking-config-only",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.168
+    },
+    {
+      "round": 3,
+      "variant": "production",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.332
+    },
+    {
+      "round": 3,
+      "variant": "smaller-schema-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 1.587
+    },
+    {
+      "round": 4,
+      "variant": "production",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.485
+    },
+    {
+      "round": 4,
+      "variant": "smaller-schema-only",
+      "http_status": 500,
+      "provider_code": 500,
+      "provider_status": "INTERNAL",
+      "error": "Internal error encountered.",
+      "valid_status_plan": false,
+      "seconds": 1.337
+    },
+    {
+      "round": 4,
+      "variant": "omit-thinking-config-only",
+      "http_status": 200,
+      "finish_reason": "STOP",
+      "valid_status_plan": true,
+      "seconds": 2.026
+    }
+  ]
+}
