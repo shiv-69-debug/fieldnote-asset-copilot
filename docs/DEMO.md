@@ -2,6 +2,13 @@
 
 ## Completed narrated recording — 4 minutes 48 seconds
 
+**Submission links (Google Drive):**
+
+- [Video — Fieldnote-demo.mp4](https://drive.google.com/file/d/1lGxYIb0J29DRsHg837vK2V_WTb-8EF2a/view)
+- [Write-up — three-page final report](https://drive.google.com/file/d/14wU-5seYy1qZEx9ZiksXJH48fIl1EzuE/view)
+
+Both uploads are complete, shared as **Anyone with the link → Viewer**, and verified while signed out. The organizer's submission form has not been submitted.
+
 [Download Fieldnote-demo.mp4](https://github.com/shiv-69-debug/fieldnote-asset-copilot/releases/download/final-submission-v2/Fieldnote-demo.mp4)
 
 The recording uses **synthetic narration**, clearly disclosed in the audio and visuals. From 0:00–2:00 it explains the design, architecture, tools, development and measured final replay. From 2:00–4:48 it executes Q3 in a fresh browser session against the 600-well dataset in explicitly selected **Local analysis** mode, then shows the result, filtered data, source note, SOP and execution details. This demo does not claim to be a fresh model-backed run.
@@ -66,7 +73,9 @@ Show page two of the report briefly.
 
 “The report summarizes results for all 11 final questions. The saved transcript contains the complete outputs and visuals. This demonstration showed one live workflow from an operational question to a compliance table and its supporting evidence. Judgement-based rankings are labeled as heuristics, and absent measurements remain unknown.”
 
-## Record and upload
+## Optional re-recording and submission
+
+The current narrated video and report are already uploaded at the links above. The following steps apply if replacing the video with an own-voice recording.
 
 1. Record with your screen recorder and microphone; stop by **4:50**, keeping the final video under five minutes. Export as `Fieldnote-demo.mp4`.
 2. In Google Drive, create a submission folder and upload `docs/final-submission.pdf` and `Fieldnote-demo.mp4`.

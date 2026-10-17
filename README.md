@@ -4,13 +4,22 @@
 
 Built for the FlytBase Asset Intelligence local challenge. Fieldnote combines a model-backed chat interface, deterministic engineering calculations, original-source citations, and persistent shared/private memory.
 
-The futuristic interface takes its near-black/lavender palette, editorial typography, and orbital visual language from [Shivmurti's portfolio](https://shiv-69-debug.github.io/shivmurti-portfolio/). Motion respects reduced-motion preferences, and every chart retains an accessible data table.
+The interface uses a near-black/lavender palette, editorial typography, and an orbital visual style. Motion respects reduced-motion preferences, and every chart retains an accessible data table.
 
 The conversation layout keeps summaries and visuals inline, with **Sources**, **Data**, and **Details** panels for deeper inspection. The sidebar collapses, large data tables are filterable/paginated, and **Latest** returns to the newest reply without forcing a scroll while you read older messages.
 
 ![Fieldnote workspace](docs/assets/workspace.png)
 
 ## Final submission files
+
+### Google Drive submission links
+
+- **[Write-up: three-page PDF](https://drive.google.com/file/d/14wU-5seYy1qZEx9ZiksXJH48fIl1EzuE/view)** — page 1 covers system design, architecture, tools and workflow; pages 2–3 cover results and output excerpts for all 11 final questions.
+- **[Video: narrated demo, 4:48](https://drive.google.com/file/d/1lGxYIb0J29DRsHg837vK2V_WTb-8EF2a/view)** — synthetic narration; two minutes of architecture followed by an actual end-to-end gas-response audit in Local analysis mode.
+
+Both files are uploaded with **Anyone with the link → Viewer** access and were checked while signed out. Paste the PDF link into the organizer's write-up field and the video link into the video field.
+
+### Repository copies and supporting evidence
 
 - [Three-page final report (PDF)](docs/final-submission.pdf) — page 1: architecture and tools; pages 2–3: results and output excerpts for all 11 final questions.
 - [Narrated demo video (MP4, 4:48)](https://github.com/shiv-69-debug/fieldnote-asset-copilot/releases/download/final-submission-v2/Fieldnote-demo.mp4) — synthetic narration, two-minute architecture explanation, then a fresh end-to-end gas audit in explicit Local analysis mode.
@@ -122,7 +131,7 @@ The repository's examples say **16 Oct 2026**; the supplied PDFs say **17 Oct 20
 - [Five-minute, own-voice demo guide](docs/DEMO.md)
 - `npm run submission`: generate a **two-page PDF rehearsal draft** from the recorded evaluation. Replace its sample-results page with the organizer's final-question results before submitting.
 
-The repository includes an automated demo with clearly labeled synthetic narration. The participant remains responsible for the organizer's submission and any requirement to use their own voice. Google Drive upload and OrganizerHQ submission have not been performed.
+The repository includes an automated demo with clearly labeled synthetic narration. Both final files are uploaded to Google Drive at the links above. The participant remains responsible for the organizer's submission and any requirement to use their own voice. OrganizerHQ submission has not been performed.
 
 ## Attribution
 
