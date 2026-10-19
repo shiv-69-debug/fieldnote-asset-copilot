@@ -133,7 +133,7 @@ The checks test application behavior; they are **not an independent official ans
 
 Certificate awarded to **Shivmurti Doddini** for participation in **AI Hackers Collective × Hacktoberfest Hack Day**, held on **17 October 2026** at **FlytBase Labs & online**.
 
-**[View or download the participation certificate (PDF)](docs/participation-certificate.pdf)**
+[![AI Hackers Collective Hacktoberfest Hack Day participation certificate awarded to Shivmurti Doddini](docs/participation-certificate.png)](docs/participation-certificate.png)
 
 ## License and attribution
 
