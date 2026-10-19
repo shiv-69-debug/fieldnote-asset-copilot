@@ -129,6 +129,12 @@ The checks test application behavior; they are **not an independent official ans
 - Temperature comparisons state their period, operating-state filter and ambient/type/month normalization.
 - This is a local challenge application. Its user selector demonstrates per-user state; it is not production authentication.
 
+## Participation certificate
+
+Certificate awarded to **Shivmurti Doddini** for participation in **AI Hackers Collective × Hacktoberfest Hack Day**, held on **17 October 2026** at **FlytBase Labs & online**.
+
+**[View or download the participation certificate (PDF)](docs/participation-certificate.pdf)**
+
 ## License and attribution
 
 Application: [MIT](LICENSE). Dataset and fictional operating documents: [FlytBaseAILabs](https://github.com/FlytBaseAILabs/flytbase-ahc-swe-asset-intelligence-dataset), © 2026 FlytBase, MIT. Dataset downloads retain their original license. Map tiles: OpenStreetMap contributors. Browser tooling: Playwright, Apache-2.0.
